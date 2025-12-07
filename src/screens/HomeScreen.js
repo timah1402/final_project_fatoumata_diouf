@@ -61,7 +61,7 @@ export default function HomeScreen({ navigation }) {
             }
           }}
         >
-          <Text style={styles.title}>🎮 QuizMaster</Text>
+          {/* <Text style={styles.title}>🎮 QuizMaster</Text> */}
         </TouchableOpacity>
         <Text style={styles.subtitle}>Engineering Edition</Text>
 
@@ -83,6 +83,15 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.buttonIcon}>🎯</Text>
             <Text style={styles.buttonText}>Join Game</Text>
             <Text style={styles.buttonSubtext}>Enter game code</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity 
+            style={[styles.button, styles.leaderboardButton]}
+            onPress={() => navigation.navigate('Leaderboard')}
+          >
+            <Text style={styles.buttonIcon}>🏆</Text>
+            <Text style={styles.buttonText}>Leaderboard</Text>
+            <Text style={styles.buttonSubtext}>Top players worldwide</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -108,6 +117,7 @@ const styles = StyleSheet.create({
   button: { padding: 24, borderRadius: 16, marginBottom: 20, alignItems: 'center' },
   hostButton: { backgroundColor: '#6C5CE7' },
   joinButton: { backgroundColor: '#00C896' },
+  leaderboardButton: { backgroundColor: '#FFD700' },
   buttonIcon: { fontSize: 48, marginBottom: 12 },
   buttonText: { color: '#FFF', fontSize: 24, fontWeight: 'bold', marginBottom: 4 },
   buttonSubtext: { color: '#FFF', fontSize: 14, opacity: 0.8 }
