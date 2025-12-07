@@ -1,9 +1,10 @@
 
+
 import { initializeApp } from 'firebase/app';
 import { getFirestore } from 'firebase/firestore';
-import { getAuth, signInAnonymously } from 'firebase/auth';
+import { initializeAuth, getReactNativePersistence } from 'firebase/auth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-// TODO: Replace with YOUR Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyC-VOXIZQ0rw-ivQHChrqxIhxuf4-U9Ep8",
   authDomain: "quizmasterlive-e3037.firebaseapp.com",
@@ -17,17 +18,12 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-// Initialize services
+// Initialize Firestore
 export const db = getFirestore(app);
-export const auth = getAuth(app);
 
-// Auto sign-in anonymously
-signInAnonymously(auth)
-  .then(() => {
-    console.log('✅ Firebase: Signed in anonymously');
-  })
-  .catch((error) => {
-    console.error('❌ Firebase auth error:', error);
-  });
+// Initialize Auth with AsyncStorage persistence
+export const auth = initializeAuth(app, {
+  persistence: getReactNativePersistence(AsyncStorage)
+});
 
 export default app;
