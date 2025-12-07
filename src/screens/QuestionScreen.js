@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { doc, onSnapshot, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, onSnapshot, updateDoc, serverTimestamp, increment } from 'firebase/firestore';
 import { db, auth } from '../config/firebase';
 import useGameStore from '../store/gameStore';
 import AnswerButton from '../components/AnswerButton';
@@ -73,6 +73,8 @@ export default function QuestionScreen({ navigation }) {
     const isCorrect = answerIndex === currentQuestion.correctAnswer;
     const points = isCorrect ? calculatePoints(true, timeElapsed, 20) : 0;
 
+    console.log(`📤 Submitting: ${isCorrect ? '✅' : '❌'} ${points} pts`);
+
     // Save response
     await updateDoc(doc(db, 'questionStates', sessionId), {
       [`responses.${user.uid}`]: {
@@ -83,15 +85,18 @@ export default function QuestionScreen({ navigation }) {
       }
     });
 
-    // Update score
+    // Update score using increment (prevents duplicates)
     await updateDoc(doc(db, 'activeSessions', sessionId), {
-      [`players.${user.uid}.score`]: myScore + points,
+      [`players.${user.uid}.score`]: increment(points),
+      [`players.${user.uid}.correctAnswers`]: increment(isCorrect ? 1 : 0),
       [`players.${user.uid}.lastAnswer`]: { isCorrect, points }
     });
 
+    console.log(`✅ Answer submitted`);
+
     // Wait 2 seconds then go to results
     setTimeout(() => {
-      navigation.navigate('QuestionResult', { questionIndex });
+      navigation.replace('QuestionResult');
     }, 2000);
   };
 

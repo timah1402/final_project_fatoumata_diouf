@@ -22,25 +22,35 @@ export function AuthProvider({ children }) {
 
   // Sign up new user
   async function signup(email, password, username) {
-    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-    const user = userCredential.user;
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
 
-    // Update display name
-    await updateProfile(user, { displayName: username });
+      // Update display name
+      await updateProfile(user, { displayName: username });
 
-    // Create user profile in Firestore
-    await setDoc(doc(db, 'users', user.uid), {
-      uid: user.uid,
-      email: email,
-      username: username,
-      createdAt: new Date(),
-      totalGames: 0,
-      totalWins: 0,
-      totalScore: 0,
-      gamesHistory: []
-    });
+      // Create user profile in Firestore
+      await setDoc(doc(db, 'users', user.uid), {
+        uid: user.uid,
+        email: email,
+        username: username,
+        createdAt: new Date(),
+        totalGames: 0,
+        totalWins: 0,
+        totalScore: 0,
+        gamesHistory: []
+      });
 
-    return user;
+      console.log('✅ User profile created in Firestore');
+      
+      // Reload profile
+      await loadUserProfile(user.uid);
+
+      return user;
+    } catch (error) {
+      console.error('Signup error:', error);
+      throw error;
+    }
   }
 
   // Login existing user
@@ -55,9 +65,15 @@ export function AuthProvider({ children }) {
 
   // Load user profile from Firestore
   async function loadUserProfile(uid) {
-    const docSnap = await getDoc(doc(db, 'users', uid));
-    if (docSnap.exists()) {
-      setUserProfile(docSnap.data());
+    try {
+      const docSnap = await getDoc(doc(db, 'users', uid));
+      if (docSnap.exists()) {
+        setUserProfile(docSnap.data());
+      } else {
+        console.log('⚠️ No user profile found');
+      }
+    } catch (error) {
+      console.error('Error loading profile:', error);
     }
   }
 
