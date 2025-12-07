@@ -83,11 +83,12 @@ export default function GameSelectionScreen({ navigation }) {
       }
 
       // Create game session
-      const result = await createGameSession(
-        game.id,
-        user.uid,
-        'Host'
-      );
+      // Create game session
+    const result = await createGameSession(
+      game.id,
+      user.uid,
+      user.displayName || 'Host'  // ← Use real username
+    );
 
       if (result.success) {
         // Get full game data
