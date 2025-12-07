@@ -1,0 +1,236 @@
+export const gamesData = [
+  // Game 1: Computer Science Quiz
+  {
+    id: 'cs_quiz_001',
+    title: 'Computer Science Challenge',
+    description: 'Test your CS fundamentals',
+    category: 'Computer Science',
+    difficulty: 'Medium',
+    gameType: 'classic',
+    icon: '💻',
+    timePerQuestion: 20,
+    questions: [
+      {
+        id: 1,
+        question: 'What is the time complexity of Binary Search?',
+        answers: ['O(n)', 'O(log n)', 'O(n²)', 'O(1)'],
+        correctAnswer: 1,
+      },
+      {
+        id: 2,
+        question: 'Which data structure uses LIFO principle?',
+        answers: ['Queue', 'Stack', 'Tree', 'Graph'],
+        correctAnswer: 1,
+      },
+      {
+        id: 3,
+        question: 'What does SQL stand for?',
+        answers: ['Structured Query Language', 'Simple Query Language', 'System Query Language', 'Standard Query Language'],
+        correctAnswer: 0,
+      },
+      {
+        id: 4,
+        question: 'Which sorting algorithm has the best average case complexity?',
+        answers: ['Bubble Sort', 'Quick Sort', 'Selection Sort', 'Insertion Sort'],
+        correctAnswer: 1,
+      },
+      {
+        id: 5,
+        question: 'What is a pointer in C/C++?',
+        answers: ['A data type', 'A variable that stores memory address', 'A function', 'An operator'],
+        correctAnswer: 1,
+      },
+    ],
+  },
+
+  // Game 2: Electrical Engineering True/False
+  {
+    id: 'ee_truefalse_001',
+    title: 'Electrical Engineering Rush',
+    description: 'Quick-fire circuit facts',
+    category: 'Electrical Engineering',
+    difficulty: 'Easy',
+    gameType: 'truefalse',
+    icon: '⚡',
+    timePerQuestion: 10,
+    questions: [
+      {
+        id: 1,
+        question: "Ohm's Law states V = I × R",
+        answers: ['True', 'False'],
+        correctAnswer: 0,
+      },
+      {
+        id: 2,
+        question: 'A capacitor stores electrical charge',
+        answers: ['True', 'False'],
+        correctAnswer: 0,
+      },
+      {
+        id: 3,
+        question: 'In a parallel circuit, voltage is different across each branch',
+        answers: ['True', 'False'],
+        correctAnswer: 1,
+      },
+      {
+        id: 4,
+        question: 'LED stands for Light Emitting Diode',
+        answers: ['True', 'False'],
+        correctAnswer: 0,
+      },
+      {
+        id: 5,
+        question: 'AC current flows in one direction only',
+        answers: ['True', 'False'],
+        correctAnswer: 1,
+      },
+    ],
+  },
+
+  // Game 3: Mechanical Engineering Higher/Lower
+  {
+    id: 'me_higherlower_001',
+    title: 'Mechanical Properties Battle',
+    description: 'Compare engineering values',
+    category: 'Mechanical Engineering',
+    difficulty: 'Hard',
+    gameType: 'higherLower',
+    icon: '⚙️',
+    timePerQuestion: 15,
+    questions: [
+      {
+        id: 1,
+        currentFact: 'Tensile Strength of Steel',
+        currentValue: 400,
+        currentUnit: 'MPa',
+        nextFact: 'Tensile Strength of Aluminum',
+        nextValue: 310,
+        correctAnswer: 'lower',
+      },
+      {
+        id: 2,
+        currentFact: 'Melting Point of Iron',
+        currentValue: 1538,
+        currentUnit: '°C',
+        nextFact: 'Melting Point of Copper',
+        nextValue: 1085,
+        correctAnswer: 'lower',
+      },
+      {
+        id: 3,
+        currentFact: 'Speed of Sound in Air',
+        currentValue: 343,
+        currentUnit: 'm/s',
+        nextFact: 'Speed of Sound in Water',
+        nextValue: 1482,
+        correctAnswer: 'higher',
+      },
+      {
+        id: 4,
+        currentFact: 'Density of Water',
+        currentValue: 1000,
+        currentUnit: 'kg/m³',
+        nextFact: 'Density of Steel',
+        nextValue: 7850,
+        correctAnswer: 'higher',
+      },
+      {
+        id: 5,
+        currentFact: 'Boiling Point of Water',
+        currentValue: 100,
+        currentUnit: '°C',
+        nextFact: 'Boiling Point of Ethanol',
+        nextValue: 78,
+        correctAnswer: 'lower',
+      },
+    ],
+  },
+
+  // Game 4: Programming Math Sprint
+  {
+    id: 'prog_math_001',
+    title: 'Engineering Math Sprint',
+    description: 'Binary, hex & conversions',
+    category: 'Programming & Math',
+    difficulty: 'Medium',
+    gameType: 'math',
+    icon: '🔢',
+    timePerQuestion: 15,
+    questions: [
+      {
+        id: 1,
+        question: 'Convert binary 1011 to decimal',
+        answers: ['9', '10', '11', '12'],
+        correctAnswer: 2,
+      },
+      {
+        id: 2,
+        question: 'What is 0xFF in decimal?',
+        answers: ['255', '256', '127', '128'],
+        correctAnswer: 0,
+      },
+      {
+        id: 3,
+        question: '1 kW = ? watts',
+        answers: ['100', '1000', '10000', '100000'],
+        correctAnswer: 1,
+      },
+      {
+        id: 4,
+        question: 'Convert decimal 16 to hexadecimal',
+        answers: ['0x0F', '0x10', '0x16', '0x1A'],
+        correctAnswer: 1,
+      },
+      {
+        id: 5,
+        question: 'What is 2^10?',
+        answers: ['512', '1024', '2048', '4096'],
+        correctAnswer: 1,
+      },
+    ],
+  },
+
+  // Game 5: Engineering Concepts
+  {
+    id: 'eng_concepts_001',
+    title: 'Engineering Terminology',
+    description: 'Complete the technical term',
+    category: 'General Engineering',
+    difficulty: 'Easy',
+    gameType: 'fillblank',
+    icon: '🎓',
+    timePerQuestion: 18,
+    questions: [
+      {
+        id: 1,
+        question: 'A ___ converts mechanical energy to electrical energy',
+        answers: ['Motor', 'Generator', 'Transformer', 'Battery'],
+        correctAnswer: 1,
+      },
+      {
+        id: 2,
+        question: 'The ___ Protocol is used for web communication',
+        answers: ['FTP', 'SMTP', 'HTTP', 'SSH'],
+        correctAnswer: 2,
+      },
+      {
+        id: 3,
+        question: "Newton's ___ Law: F = ma",
+        answers: ['First', 'Second', 'Third', 'Fourth'],
+        correctAnswer: 1,
+      },
+      {
+        id: 4,
+        question: 'In programming, a ___ is a step-by-step procedure',
+        answers: ['Variable', 'Function', 'Algorithm', 'Compiler'],
+        correctAnswer: 2,
+      },
+      {
+        id: 5,
+        question: 'RAM stands for Random ___ Memory',
+        answers: ['Access', 'Array', 'Application', 'Automatic'],
+        correctAnswer: 0,
+      },
+    ],
+  },
+];
