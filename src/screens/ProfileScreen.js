@@ -107,7 +107,7 @@ export default function ProfileScreen({ navigation }) {
         {/* Fix Profile Button */}
         {!userProfile && (
           <TouchableOpacity style={styles.fixButton} onPress={createMyProfile}>
-            <Text style={styles.fixText}>⚠️ Fix My Profile</Text>
+            <Text style={styles.fixText}>⚠️ KAHOOT Profile</Text>
           </TouchableOpacity>
         )}
 

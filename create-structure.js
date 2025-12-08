@@ -91,7 +91,7 @@ function createStructure(content, basePath = '.') {
   }
 }
 
-console.log('🚀 Creating QuizMasterLive project structure...\n');
+console.log('🚀 Creating KAHOOT project structure...\n');
 createStructure(structure, '.');
 console.log('\n✅ File structure created successfully!');
 console.log('\n📊 Next steps:');

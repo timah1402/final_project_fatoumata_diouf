@@ -30,7 +30,7 @@ export default function LoginScreen({ navigation }) {
   return (
     <LinearGradient colors={['#1E1E2E', '#2D2D44']} style={styles.container}>
       <View style={styles.content}>
-        <Text style={styles.title}>🎮 QuizMaster</Text>
+        <Text style={styles.title}>🎮 KAHOOT</Text>
         <Text style={styles.subtitle}>Engineering Edition</Text>
 
         <View style={styles.form}>

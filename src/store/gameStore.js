@@ -1,57 +1,62 @@
 import { create } from 'zustand';
 
 const useGameStore = create((set) => ({
-  // User info
+  // User state
   userId: null,
   playerName: null,
   isHost: false,
-  
-  // Game session
+
+  // Session state
   sessionId: null,
   gameCode: null,
   selectedGame: null,
-  currentQuestionIndex: 0,
-  
-  // Player data
+
+  // Players
   players: {},
-  myScore: 0,
-  
+
   // Actions
-  setUser: (userId, playerName, isHost = false) =>
+  setUser: (userId, playerName, isHost) =>
     set({ userId, playerName, isHost }),
-  
-  setSession: (sessionId, gameCode, selectedGame) =>
-    set({ sessionId, gameCode, selectedGame }),
-  
+
+  setSession: (sessionId, gameCode, isHost) =>
+    set({ sessionId, gameCode, isHost }),
+
+  setSelectedGame: (game) =>
+    set({ selectedGame: game }),
+
   setPlayers: (players) =>
     set({ players }),
-  
-  addPlayer: (playerId, playerData) =>
+
+  addPlayer: (player) =>
     set((state) => ({
-      players: { ...state.players, [playerId]: playerData }
+      players: { ...state.players, [player.id]: player },
     })),
-  
+
   removePlayer: (playerId) =>
     set((state) => {
       const newPlayers = { ...state.players };
       delete newPlayers[playerId];
       return { players: newPlayers };
     }),
-  
+
   updateMyScore: (score) =>
-    set({ myScore: score }),
-  
-  setCurrentQuestionIndex: (index) =>
-    set({ currentQuestionIndex: index }),
-  
+    set((state) => ({
+      players: {
+        ...state.players,
+        [state.userId]: {
+          ...state.players[state.userId],
+          score,
+        },
+      },
+    })),
+
   resetGame: () =>
     set({
       sessionId: null,
       gameCode: null,
       selectedGame: null,
-      currentQuestionIndex: 0,
       players: {},
-      myScore: 0,
+      isHost: false,
     }),
 }));
 
