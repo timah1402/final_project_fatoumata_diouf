@@ -76,13 +76,39 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.buttonSubtext}>Create a new quiz</Text>
           </TouchableOpacity>
           <TouchableOpacity 
+          
+
   style={[styles.button, styles.createButton]}
   onPress={() => navigation.navigate('CreateGame')}
 >
+
+  
   <Text style={styles.buttonIcon}>✨</Text>
   <Text style={styles.buttonText}>Create Game</Text>
   <Text style={styles.buttonSubtext}>Build your own quiz</Text>
 </TouchableOpacity>
+<TouchableOpacity 
+  style={[styles.button, styles.myGamesButton]}
+  onPress={() => navigation.navigate('MyGames')}
+>
+  <Text style={styles.buttonIcon}>📝</Text>
+  <Text style={styles.buttonText}>My Games</Text>
+  <Text style={styles.buttonSubtext}>Manage your quizzes</Text>
+</TouchableOpacity>
+
+// Add after "My Games" button:
+<TouchableOpacity 
+  style={[styles.button, styles.leaderboardButton]}
+  onPress={() => navigation.navigate('Leaderboard')}
+>
+  <Text style={styles.buttonIcon}>🏆</Text>
+  <Text style={styles.buttonText}>Leaderboard</Text>
+  <Text style={styles.buttonSubtext}>See top players</Text>
+</TouchableOpacity>
+
+
+
+
 
           <TouchableOpacity 
             style={[styles.button, styles.joinButton]}
@@ -119,5 +145,6 @@ const styles = StyleSheet.create({
   buttonIcon: { fontSize: 48, marginBottom: 12 },
   buttonText: { color: '#FFF', fontSize: 24, fontWeight: 'bold', marginBottom: 4 },
   buttonSubtext: { color: '#FFF', fontSize: 14, opacity: 0.8 },
-  createButton: { backgroundColor: '#FFD700' }
+  createButton: { backgroundColor: '#FFD700' },
+  leaderboardButton: { backgroundColor: '#FFD700' }
 });

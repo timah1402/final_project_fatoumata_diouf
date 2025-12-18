@@ -151,7 +151,9 @@ export default function GameSelectionScreen({ navigation }) {
         data={games}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <GameCard game={item} onPress={() => handleGameSelect(item)} />
+          <GameCard game={item} onPress={() => handleGameSelect(item)} 
+          navigation={navigation}
+          />
         )}
         contentContainerStyle={styles.listContent}
       />
