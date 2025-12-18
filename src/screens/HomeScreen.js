@@ -61,7 +61,7 @@ export default function HomeScreen({ navigation }) {
             }
           }}
         >
-          <Text style={styles.title}>🎮 Kahoot app</Text>
+          <Text style={styles.title}>🎮 Kahoot App</Text>
         </TouchableOpacity>
         <Text style={styles.subtitle}>Engineering Edition</Text>
 
