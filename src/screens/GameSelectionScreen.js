@@ -19,22 +19,32 @@ export default function GameSelectionScreen({ navigation }) {
   }, []);
 
   const loadGames = async () => {
-    try {
-      const gamesCollection = collection(db, 'games');
-      const gamesSnapshot = await getDocs(gamesCollection);
-      const gamesList = gamesSnapshot.docs.map(doc => ({
-        id: doc.id,
-        ...doc.data()
-      }));
-      
-      setGames(gamesList);
-      console.log(`✅ Loaded ${gamesList.length} games`);
-    } catch (error) {
-      console.error('❌ Error loading games:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  try {
+    const gamesCollection = collection(db, 'games');
+    const gamesSnapshot = await getDocs(gamesCollection);
+    const gamesList = gamesSnapshot.docs.map(doc => ({
+      id: doc.id,
+      ...doc.data()
+    }));
+    
+    // Get current user
+    const user = auth.currentUser;
+    
+    // Show: public games + my private games + games without isPublic field (old games)
+    const filtered = gamesList.filter(game => 
+      game.isPublic === true || 
+      game.isPublic === undefined ||  // ← OLD GAMES (no isPublic field)
+      game.createdBy === user?.uid
+    );
+    
+    setGames(filtered);
+    console.log(`✅ Loaded ${filtered.length} games`);
+  } catch (error) {
+    console.error('❌ Error loading games:', error);
+  } finally {
+    setLoading(false);
+  }
+};
 
   const createGameSession = async (gameId, hostId, hostName) => {
     try {

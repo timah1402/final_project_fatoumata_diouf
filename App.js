@@ -15,7 +15,7 @@ import LobbyScreen from './src/screens/LobbyScreen';
 import QuestionScreen from './src/screens/QuestionScreen';
 import QuestionResultScreen from './src/screens/QuestionResultScreen';
 import FinalResultsScreen from './src/screens/FinalResultsScreen';
-
+import CreateGameScreen from './src/screens/CreateGameScreen';
 const Stack = createStackNavigator();
 
 export default function App() {
@@ -39,6 +39,7 @@ export default function App() {
           <Stack.Screen name="Question" component={QuestionScreen} />
           <Stack.Screen name="QuestionResult" component={QuestionResultScreen} />
           <Stack.Screen name="FinalResults" component={FinalResultsScreen} />
+          <Stack.Screen name="CreateGame" component={CreateGameScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </AuthProvider>

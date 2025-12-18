@@ -75,6 +75,14 @@ export default function HomeScreen({ navigation }) {
             <Text style={styles.buttonText}>Host Game</Text>
             <Text style={styles.buttonSubtext}>Create a new quiz</Text>
           </TouchableOpacity>
+          <TouchableOpacity 
+  style={[styles.button, styles.createButton]}
+  onPress={() => navigation.navigate('CreateGame')}
+>
+  <Text style={styles.buttonIcon}>✨</Text>
+  <Text style={styles.buttonText}>Create Game</Text>
+  <Text style={styles.buttonSubtext}>Build your own quiz</Text>
+</TouchableOpacity>
 
           <TouchableOpacity 
             style={[styles.button, styles.joinButton]}
@@ -110,5 +118,6 @@ const styles = StyleSheet.create({
   joinButton: { backgroundColor: '#00C896' },
   buttonIcon: { fontSize: 48, marginBottom: 12 },
   buttonText: { color: '#FFF', fontSize: 24, fontWeight: 'bold', marginBottom: 4 },
-  buttonSubtext: { color: '#FFF', fontSize: 14, opacity: 0.8 }
+  buttonSubtext: { color: '#FFF', fontSize: 14, opacity: 0.8 },
+  createButton: { backgroundColor: '#FFD700' }
 });
