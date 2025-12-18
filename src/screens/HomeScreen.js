@@ -61,7 +61,7 @@ export default function HomeScreen({ navigation }) {
             }
           }}
         >
-          <Text style={styles.title}>🎮 QuizMaster</Text>
+          <Text style={styles.title}>🎮 Kahoot app</Text>
         </TouchableOpacity>
         <Text style={styles.subtitle}>Engineering Edition</Text>
 
